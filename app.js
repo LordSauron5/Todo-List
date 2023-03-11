@@ -10,7 +10,7 @@ const app = express();
 main().catch(err => console.log(err));
 
 async function main() {
-    mongoose.connect("mongodb://127.0.0.1:27017/todoListDB", { useNewUrlParser: true });
+    mongoose.connect("mongodb+srv://tyronaricum1:TodoList21436578@cluster0.glxhhjo.mongodb.net/todolistDB", { useNewUrlParser: true });
     console.log("Connected successfully to server");
     
     // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
