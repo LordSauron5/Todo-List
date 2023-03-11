@@ -25,13 +25,20 @@ const item1 = new Item({
     name: 'Welcome to your todo list!'
 });
 const item2 = new Item({
-    name: 'Hi tthe + button to add a new item.'
+    name: 'Hi the + button to add a new item.'
 });
 const item3 = new Item({
     name: '<--- Hit this to delete an item.'
 });
 
 const defaultItems = [item1, item2, item3];
+
+const listSchema = new mongoose.Schema({
+    name: String,
+    items: [itemsSchema]
+});
+
+const List = mongoose.model('List', listSchema);
 
 
 
@@ -73,14 +80,29 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
     let itemName = req.body.newItem;
+    const listName = req.body.list
 
     const item = new Item({
         name: itemName
     });
 
-    item.save();
 
-    res.redirect("/")
+    if(listName === "Today") {
+        item.save();
+        res.redirect("/")
+    } else {
+
+        List.findOne({name: listName})
+        .then(function (foundList) {
+            foundList.items.push(item);
+            foundList.save();
+            res.redirect("/" + foundList.name)
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+    }
+
 
 });
 
@@ -103,17 +125,29 @@ app.post("/delete", (req, res) => {
 
 });
 
-app.post("/work", (req, res) => {
-    let item = req.body.newItem;
+app.get("/:customListName", (req, res) => {
+    const customListName = req.params.customListName;
 
-    workItems.push(item);
+    List.findOne({name: customListName})
+    .then(function (foundList){
+        // show existing list
+        res.render("list", {listTitle: foundList.name,  newListItems: foundList.items});
+    })
+    .catch(function (err) {
+        // create new list
+        const list = new List({
+            name: customListName,
+            items: defaultItems
+        });
+    
+        list.save();
 
-    res.redirect('/work');
+        res.redirect("/" + customListName);
+    });
+
+    
+
 });
-
-app.get("/work", (req, res) => {
-    res.render('list', {listTitle: "Work List", newListItems: workItems});
-})
 
 app.get("/about", (req, res) => {
     res.render('about');
