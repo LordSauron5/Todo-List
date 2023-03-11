@@ -97,6 +97,7 @@ app.post("/", (req, res) => {
         .then(function (foundList) {
             foundList.items.push(item);
             foundList.save();
+            console.log("saved new item to list: " + foundList.name);
             res.redirect("/" + foundList.name)
         })
         .catch(function (err) {
