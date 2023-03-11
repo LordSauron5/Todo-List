@@ -8,6 +8,9 @@
   },
   "author": "Tyron Aricum",
   "license": "ISC",
+  "engines": {
+    "node": "v18.13.0"
+  },
   "dependencies": {
     "body-parser": "^1.20.1",
     "ejs": "^3.1.8",
