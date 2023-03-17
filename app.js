@@ -53,7 +53,6 @@ app.get("/", (req, res) => {
 
     Item.find({})
     .then(function(items) {
-        // res.render('list', {listTitle: day, newListItems: items});
 
         if(items.length === 0) {
             Item.insertMany(defaultItems)
