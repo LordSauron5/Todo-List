@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "vercel-build": "node ./app.js"
+    "vercel-build": "node app.js"
   },
   "author": "Tyron Aricum",
   "license": "ISC",
