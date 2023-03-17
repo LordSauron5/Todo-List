@@ -4,8 +4,7 @@
   "description": "basic todo list application",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "vercel-build": "node app.js"
+    "start": "node app.js"
   },
   "author": "Tyron Aricum",
   "license": "ISC",
