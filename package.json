@@ -18,5 +18,8 @@
     "loadash": "^1.0.0",
     "lodash": "^4.17.21",
     "mongoose": "^7.0.1"
+  },
+  "devDependencies": {
+    "@vercel/node": "^2.9.13"
   }
 }
