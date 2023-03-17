@@ -1,6 +1,6 @@
 # Todo-List.
 
-![](https://cdn-icons-png.flaticon.com/512/7977/7977839.pngg)
+![](https://cdn-icons-png.flaticon.com/512/7977/7977839.png)
 
 Todo-List.
 
@@ -33,6 +33,6 @@ To view a live example, [click here.](#/ "click here.")
 ### Screenshots
 
 
-![](https://imgur.com/a/CJajVUf)
+![](https://i.imgur.com/ZuzOiNQ.png)
 
 > Demo of Todo-List.
